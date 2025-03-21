@@ -1,0 +1,21 @@
+.katex-block {
+  overflow-y: auto;
+}
+
+// Task list
+ul.task-list-container {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+// Fix daisyui link style
+.link {
+  text-decoration-line: none;
+}
+
+// Feature icons
+.VPFeature img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+}

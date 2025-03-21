@@ -10,15 +10,19 @@ hero:
     - theme: brand
       text: 目录
       link: /catalog
+  image:
+      src: /home.svg
+      alt: 小婷博客
 
 features:
-  - title: JavaScript
-    details: JavaScript 学习重点总结
-    link: /javascript
-  - title: tsconfig.js
-    details: TS相关配置
-    link: /tsconfig
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 基础三件套
+    details: Html、CSS、JavaScript 学习重点总结
+    link: /base/
+  - title: 工具
+    details: 前端开发工具使用总结
+    link: /tools/
+  - title: OAuth2 & SSO
+    details: OAuth2 认证流程与前端实现
+    link: /oauth/
 ---
 

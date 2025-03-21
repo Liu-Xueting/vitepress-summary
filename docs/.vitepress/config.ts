@@ -2,20 +2,23 @@ import { defineConfig } from 'vitepress'
 import process from 'node:process'
 import { slug as slugify } from 'github-slugger'
 import { refactorSidebar } from './utils/catalog'
-import { withMermaid } from 'vitepress-plugin-mermaid'
 import { tasklist } from '@mdit/plugin-tasklist'
+import { katex } from '@mdit/plugin-katex'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 import { footnote } from '@mdit/plugin-footnote'
 import { attrs } from '@mdit/plugin-attrs'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 import { align } from '@mdit/plugin-align'
 import AutoSidebarPlugin from 'vite-plugin-vitepress-auto-sidebar'
 
 const isDev = process.env.npm_lifecycle_event?.startsWith('dev') ?? false
 const HOST = 'https://ting.alexsun.top'
 const BASE = '/blog/'
+type ThemeConfig = Parameters<typeof defineConfig>[0]
+
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
-  title: "小婷博客",
+export default withMermaid(<ThemeConfig>{
+  title: "小婷公共文档",
   description: "学习总结&技术讨论",
   base: BASE,
   themeConfig: {
@@ -24,21 +27,8 @@ export default defineConfig({
       {
         text: '主页',
         items: [
-          { text: "博客", link: '/blog/' },
-          { text: "教程", link: '/collections/' },
-          { text: "人工智能", link: '/ai/' },
+          { text: "基础三件套", link: '/base/' },
           { text: "工具", link: '/tools/' },
-          { text: "计算机科学", link: '/computer-science' },
-          { text: "数学", link: '/math/' },
-          { text: "开放书籍", link: '/books/' },
-          { text: "概念列表", link: '/concepts/' },
-          { text: "Python", link: '/python/' },
-          { text: "前端", link: '/frontend/' },
-          { text: "后端", link: '/backend/' },
-          { text: "C/C++", link: '/cpp/' },
-          { text: "运维", link: '/ops/' },
-          { text: "计算机视觉", link: '/cv/' },
-          { text: "嵌入式", link: '/embedded/' },
         ]
       },
     ],
@@ -51,7 +41,7 @@ export default defineConfig({
 
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/' }
+      { icon: 'github', link: 'https://github.com/Liu-Xueting' }
     ],
     docFooter: {
       prev: '上一页',
@@ -117,6 +107,7 @@ export default defineConfig({
         .use(attrs)
         .use(align)
         .use(tasklist)
+        .use(katex)
     },
   },
   sitemap: {

@@ -1,4 +1,4 @@
-# tsconfig.json文件配置详解与常用配置
+# tsconfig.json
 
 tsconfig.json文件是TypeScript项目的配置文件，用于配置TypeScript编译器的编译选项。
 
@@ -32,7 +32,7 @@ tsconfig.json文件是TypeScript项目的配置文件，用于配置TypeScript�
 {
   "compilerOptions": { //编译选项
     "allowJS": false, // 允许编译器编译JS，JSX文件
-    "checkJs": false, // 	在 .js文件中报告错误。与allowJs配合使用。
+    "checkJs": false, //  在 .js文件中报告错误。与allowJs配合使用。
     "allowSyntheticDefaultImports": false, //允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。默认值：module === "system" 或设置了 --esModuleInterop 且 module 不为 es2015 / esnext
     "allowUnreachableCode": false, //不报告执行不到的代码错误。
     "allowUnusedLabels": false, //不报告未使用的标签错误
@@ -97,7 +97,7 @@ tsconfig.json文件是TypeScript项目的配置文件，用于配置TypeScript�
     "skipLibCheck": false, //忽略所有的声明文件（ *.d.ts）的类型检查
     "strictNullChecks": true, // 不允许把null、undefined赋值给其他类型的变量.在严格的 null检查模式下， null和 undefined值不包含在任何类型里，只允许用它们自己和 any来赋值（有个例外， undefined可以赋值到 void）
     "strictFunctionTypes": true, // 不允许函数参数双向协变
-    "strictPropertyInitialization": true, // 	确保类的非undefined属性已经在构造函数里初始化。若要令此选项生效，需要同时启用--strictNullChecks
+    "strictPropertyInitialization": true, //  确保类的非undefined属性已经在构造函数里初始化。若要令此选项生效，需要同时启用--strictNullChecks
     "suppressExcessPropertyErrors": false, //阻止对对象字面量的额外属性检查
     "suppressImplicitAnyIndexErrors": false, //阻止 --noImplicitAny对缺少索引签名的索引对象报错
     "strictBindCallApply": true, // 严格的bind/call/apply检查
@@ -142,7 +142,7 @@ tsconfig.json文件是TypeScript项目的配置文件，用于配置TypeScript�
 | 在compilerOptions中指定的"outDir" |   永远会被编译器排除，除非你明确地使用"files"将其包含进来（这时就算用exclude指定也没用）     |
 | 特殊情况 | 编译器不会去引入那些可能做为输出的文件；比如，假设我们包含了index.ts，那么index.d.ts和index.js会被排除在外。 通常来讲，不推荐只有扩展名的不同来区分同目录下的文件 |
 
-**常用配置**
+**常用配置**:
 
 ```json
 {

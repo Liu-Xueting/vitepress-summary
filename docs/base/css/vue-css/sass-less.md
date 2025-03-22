@@ -91,6 +91,10 @@ $base-font-size: 16px;
 
 ### 2.3 混入(Mixins)机制
 
+- 用于定义可重用的样式片段
+- 可以传递参数和默认值
+- 可以包含条件判断和循环控制
+
 ```scss
 // Sass mixin
 @mixin border-radius($radius: 5px) {

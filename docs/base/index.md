@@ -3,3 +3,5 @@
 - [HTML](./html/)
 - [CSS](./css/)
 - [JavaScript](./javascript/)
+- [Web API](./web-api/)
+- [npm](./npm/)

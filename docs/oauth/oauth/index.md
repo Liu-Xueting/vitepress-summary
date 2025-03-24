@@ -129,19 +129,3 @@ sequenceDiagram
 | 隐式模式         | ✅        | ✅            | ❌            | SPA 单页应用            |
 | 密码模式         | ✅        | ❌            | ✅            | 内部可信应用            |
 | 客户端凭证模式   | ❌        | ❌            | ✅            | 服务间通信              |
-
-### 数学表达式验证（令牌有效期）
-
-令牌有效性验证公式：
-
-```math
-\text{Valid} = \begin{cases} 
-1 & \text{if } \text{timestamp} \in [\text{iat}, \text{exp}) \\
-0 & \text{otherwise}
-\end{cases}
-```
-
-其中：
-
-- $\text{iat}$ = 颁发时间 (issued at)
-- $\text{exp}$ = 过期时间 (expiration)

@@ -208,6 +208,138 @@ float: left | right | none;
 - clear: none：允许元素的两侧有浮动元素
 - clear: inherit：继承父元素的清除浮动属性
 
+**清除浮动的方法**：
+
+- 父元素清除浮动
+
+```html  
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>清除浮动</title>
+ <style type="text/css">
+  .father{
+    /*父盒子设置固定高度*/
+   height: 100px;
+   border: 1px solid red;
+  }
+  .child{
+   width: 100px;
+   height: 100px;
+   float: left;
+   background-color: green;
+  }
+ </style>
+</head>
+<body>
+ <div class="father">
+  <div class="child">child</div>
+ </div>
+ 
+</body>
+</html>
+```
+
+- 使用空元素清除浮动
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>清除浮动</title>
+ <style type="text/css">
+  .father{
+   border: 1px solid red;
+  }
+  .child{
+   width: 100px;
+   height: 100px;
+   float: left;
+   background-color: green;
+  }
+  .clearfix{
+   clear: both;
+  }
+ </style>
+</head>
+<body>
+ <div class="father">
+  <div class="child">child</div>
+  <div class="clearfix"></div>
+ </div>
+ 
+</body>
+</html>
+```
+
+- 使用 overflow 属性清除浮动
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>清除浮动</title>
+ <style type="text/css">
+  .father{
+   overflow: hidden;
+   border: 1px solid red;
+  }
+  .child{
+   width: 100px;
+   height: 100px;
+   float: left;
+   background-color: green;
+  }
+  
+ </style>
+</head>
+<body>
+ <div class="father">
+  <div class="child">child</div>
+ </div>
+ 
+</body>
+</html>
+```
+
+- 使用 :after 伪元素清除浮动
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>清除浮动</title>
+ <style type="text/css">
+  .father{
+   border: 1px solid red;
+  }
+  .child{
+   width: 100px;
+   height: 100px;
+   float: left;
+   background-color: green;
+  }
+  .cleafix:after{
+   content:'.';
+   display: block;
+   clear: both;
+  }
+  
+ </style>
+</head>
+<body>
+ <div class="father clearfix">
+  <div class="child">child</div>
+ </div>
+ 
+</body>
+</html>
+```
+
 ### 2.6 css定位
 
 - top

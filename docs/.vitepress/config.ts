@@ -20,6 +20,10 @@ type ThemeConfig = Parameters<typeof defineConfig>[0]
 export default withMermaid(<ThemeConfig>{
   title: "小婷公共文档",
   description: "学习总结&技术讨论",
+  head: [
+    // 添加图标
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
+  ],
   base: BASE,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

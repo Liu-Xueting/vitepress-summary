@@ -234,3 +234,10 @@ function App() {
 }
 export default App;
 ```
+
+## react onclick传参
+
+react onClick事件传递参数为什么要用箭头函数？
+
+因为在react中，add()属于立即执行函数，add才属于函数
+onClick事件的回调函数会被自动浏览器调用，但是如果直接传递一个立即执行函数，那么这个函数会在组件渲染时就被调用，而不是在点击时被调用。

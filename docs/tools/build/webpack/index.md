@@ -1,4 +1,7 @@
+
 # Webpack
+
+[[TOC]]
 
 - 使用步骤：
     1. 初始化项目：`npm init -y`
@@ -59,6 +62,7 @@ npm install css-loader style-loader less-loader sass-loader file-loader babel-lo
 ```
 
 ```js
+webpack.config.js
 module.exports = {
     module: {
         rules: [

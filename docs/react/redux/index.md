@@ -2,6 +2,50 @@
 
 ## 基本使用
 
+- 定义一个reducer函数 （根据当前想要做的修改返回一个新的状态）
+- 使用createrStore方法传入reducer函数创建一个store实例对象
+- 使用store实例的方法
+  - getState() 获取当前状态
+  - dispatch(action) 提交action对象，触发reducer函数
+  - subscribe(listener) 监听状态变化，返回一个取消监听的函数 （数据一旦发生变化，可以得到通知）
+
+```js
+import { createStore } from 'redux'
+// reducer函数
+const reducer = (state = { count: 0 }, action) => {
+    switch (action.type) {
+        case 'increment':
+            return { count: state.count + 1 }
+        case 'decrement':
+            return { count: state.count - 1 }
+        default:
+            return state
+    }
+}
+// 创建store实例对象
+const store = createStore(reducer)
+// 获取当前状态
+const state = store.getState()
+console.log(state) // { count: 0 }
+// 监听状态变化
+const unsubscribe = store.subscribe(() => {
+    console.log('state changed:', store.getState())
+})
+// 提交action对象
+store.dispatch({ type: 'increment' }) // { count: 1 }
+store.dispatch({ type: 'decrement' }) // { count: 0 }
+// 取消监听
+unsubscribe()
+```
+
+Redux分成三个核心概念：
+
+- **state**：一个对象 存储应用程序的状态
+- **actions**：一个对象 用来描述你想怎么改数据
+- **reducer**：一个函数 根据action的描述生成一个新的state
+
+## 使用 Redux Toolkit 和 React-Redux
+
 1. 安装 Redux Toolkit 和 React-Redux
 
     ```bash
@@ -59,17 +103,17 @@
         },
         reducers: {
             increment: state => {
-            // Redux Toolkit 允许我们在 reducers 写 "可变" 逻辑。它
-            // 并不是真正的改变状态值，因为它使用了 Immer 库
-            // 可以检测到“草稿状态“ 的变化并且基于这些变化生产全新的
-            // 不可变的状态
-            state.value += 1
+                // Redux Toolkit 允许我们在 reducers 写 "可变" 逻辑。它
+                // 并不是真正的改变状态值，因为它使用了 Immer 库
+                // 可以检测到“草稿状态“ 的变化并且基于这些变化生产全新的
+                // 不可变的状态
+                state.value += 1
             },
             decrement: state => {
-            state.value -= 1
+                state.value -= 1
             },
             incrementByAmount: (state, action) => {
-            state.value += action.payload
+                state.value += action.payload
             }
         }
     })
@@ -99,17 +143,17 @@
             <div>
             <div>
                 <button
-                aria-label="Increment value"
-                onClick={() => dispatch(increment())}
+                    aria-label="Increment value"
+                    onClick={() => dispatch(increment())}
                 >
-                Increment
+                    Increment
                 </button>
                 <span>{count}</span>
                 <button
-                aria-label="Decrement value"
-                onClick={() => dispatch(decrement())}
+                    aria-label="Decrement value"
+                    onClick={() => dispatch(decrement())}
                 >
-                Decrement
+                    Decrement
                 </button>
             </div>
             </div>
@@ -138,3 +182,44 @@
 - 在 React 组件中使用 React-Redux `useSelector/useDispatch` 钩子
   - 使用 `useSelector` 钩子从 store 中读取数据
   - 使用 `useDispatch` 钩子获取 dispatch 函数，并根据需要 dispatch actions
+
+## 重点解释
+
+配套工具：
+
+- **Redux Toolkit**：官方推荐的 Redux 工具集，简化了 Redux 的使用
+  - 简化store的配置方式
+  - 内置 immer 支持可变式状态修改
+  - 内置 thunk 支持异步操作
+- **React-Redux**：官方推荐的 React 绑定库，用来链接redux和React组件的中间件，提供了 `useSelector` 和 `useDispatch` 钩子
+
+提交action传递参数：
+
+在reducers的同步修改方法中添加**action对象参数**，在调用 **actionCreater的时候传递参数**，参数会被传递到**action对象payload属性**上
+
+```js
+import { createSlice } from '@reduxjs/toolkit'
+
+const counterSlice = createSlice({
+    name: 'counter',
+    initialState: {
+        value: 0
+    },
+    reducers: {
+        increment: (state, action) => {
+            state.value += action.payload
+        },
+        decrement: (state, action) => {
+            state.value -= action.payload
+        }
+    }
+})
+```
+
+异步操作：
+
+- 创建store的写法保持不变，配置好同步修改的方法
+- 单独封装一个函数，在函数内部return一个新函数，在新函数中
+  - 封装异步请求获取数据
+  - 调用同步actionCreater传入异步数据生成一个action对象，并使用dispatch方法提交action
+- 组件中dispatch的写法保持不变

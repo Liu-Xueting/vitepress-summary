@@ -25,10 +25,13 @@ features:
     details: OAuth2 认证流程与前端实现
     link: /oauth/
   - title: Vue
-  - details: Vue 相关知识总结
+    details: Vue 相关知识总结
     link: /vue/
   - title: React
-  - details: React 相关知识总结
+    details: React 相关知识总结
     link: /react/
+  - title: Face
+    details: 前端面试知识总结
+    link: /face/
 ---
 

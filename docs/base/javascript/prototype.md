@@ -43,6 +43,7 @@ Object.getPrototypeOf(regexp) === RegExp.prototype; // true
 function Constructor() {}
 
 const obj = new Constructor();
+// Constructor ---> Function.prototype
 // obj ---> Constructor.prototype ---> Object.prototype ---> null
 ```
 
@@ -175,3 +176,18 @@ const p = { b: 2, __proto__: o };
   Object.setPrototypeOf(obj, anotherObj);
   // obj ---> anotherObj ---> Object.prototype ---> null
   ```
+
+## 原型图
+
+![原型图](/proto.png)
+
+1. Function.prototype.__proto__ === Object.prototype
+2. 如果在深究一点，Object也是函数对象，Object.__proto__ 也会指向Function.prototype
+3. 构造函数Test也有constructor属性，这个属性指向创建该函数的构造函数；如果自己没有定义构造函数，会指向到 Function （Test.constructor === Function）
+
+## 总结
+
+1. 每个对象均存在隐式原型(__proto__)，函数对象才有prototype属性
+2. __proto__存在的意义在于为原型链查找提供方向，原型链查找靠的是__proto__，而不是prototype
+3. 函数对象的__proto__都指向Function.prototype  Test.__proto__ === Function.prototype
+4. 每个对象都有一个隐式原型属性(__proto__)，多个原型通过__proto__链接在一起形成的链式结构就是原型链

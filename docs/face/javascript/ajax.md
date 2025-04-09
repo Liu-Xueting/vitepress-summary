@@ -6,7 +6,7 @@ AJAX全称(Async Javascript and XML)
 
 Ajax的原理简单来说通过 `XmlHttpRequest` 对象来向服务器发异步请求，从服务器获得数据，然后用JavaScript来操作DOM而更新页面
 
-### 实现过程
+## 实现过程
 
 - 创建 Ajax的核心对象 `XMLHttpRequest` 对象
 - 通过 XMLHttpRequest 对象的 `open()` 方法与服务端建立连接

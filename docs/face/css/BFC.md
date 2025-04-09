@@ -1,4 +1,4 @@
-# 8. BFC
+# BFC
 
 BFC（Block Formatting Context），即块级格式化上下文，它是页面中的一块渲染区域，并且有一套属于自己的渲染规则：
 

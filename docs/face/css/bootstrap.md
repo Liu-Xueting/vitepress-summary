@@ -113,12 +113,17 @@ Bootstrap提供下列三种不同的容器:
 - `.justify-content-center`：水平向后(容器末端)对齐
 - `.justify-content-end`：水平置中对齐
 - `.justify-content-around` ：让区块等间距放置(左右有间距，但大小不相等)
-  ![justify-content-around](/justifu-around.png)
-- `.justify-content-between`：让区块之间等间距放置(左右没有间距)
-  ![justify-content-between](/justify-between.png)
-- `.justify-content-evenly`: 让区块等间距放置(左右有间距，且大小相等)
-  ![justify-content-evenly](/justify-evenly.png)
   
+![justify-content-around](/justify-around.png)
+
+- `.justify-content-between`：让区块之间等间距放置(左右没有间距)
+  
+![justify-content-between](/justify-between.png)
+
+- `.justify-content-evenly`: 让区块等间距放置(左右有间距，且大小相等)
+  
+![justify-content-evenly](/justify-evenly.png)
+
 ### column的宽度、位移、换行与顺序
 
 **column的宽度**：

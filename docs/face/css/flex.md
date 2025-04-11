@@ -22,6 +22,7 @@ display: inline-flex: 将元素设置为弹性盒子，允许其子元素使用�
 ## flex模型说明
 
 当元素表现为 flex 框时，它们沿着两个轴来布局：
+
 ![Flex Layout](./flex.png)
 
 - 主轴（main axis）是沿着 flex 元素放置的方向延伸的轴。该轴的开始和结束被称为 main start 和 main end。

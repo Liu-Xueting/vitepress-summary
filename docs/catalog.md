@@ -18,6 +18,8 @@
 
 - [CSS](./face/css/)
 - [JavaScript](./face/javascript/)
+- [面试场景题](./face/view/)
+- [Vue 相关面试题](./face/vue/)
 
 ## OAUTH
 
@@ -48,3 +50,4 @@
 
 - [defineComponent](./vue/definecomponent/)
 - [Props & Events](./vue/props/)
+- [Vue底层原理解析](./vue/vue-deep/)

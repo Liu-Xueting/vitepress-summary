@@ -60,9 +60,15 @@ for(let i=0; i<100000; i++){
 
 如果没有 `nextTick` 更新机制，那么 `num` 每次更新值都会触发视图更新(上面这段代码也就是会更新10万次视图)，有了`nextTick` 机制，只需要更新一次，所以nextTick本质是一种优化策略
 
+## nextTick的原理
+
+`Vue.js` 的响应式系统会在数据变化时将更新任务推入一个队列，然后在下一个事件循环（event loop）中执行这些任务。`nextTick` 通过将回调函数推入这个队列的末尾，确保在 DOM 更新完成后再执行回调。
+
+简单来说，`nextTick` 就是一个微任务（microtask），它会在当前宏任务（macrotask）结束后立即执行
+
 ## 使用场景
 
-如果想要在修改数据后立刻得到更新后的DOM结构，可以使用Vue.nextTick()
+如果想要在修改数据后立刻得到更新后的DOM结构，可以使用 `Vue.nextTick()`
 
 第一个参数为：回调函数（可以获取最近的DOM结构）
 
@@ -97,3 +103,9 @@ console.log(this.$el.textContent) // => '原始的值'
 await this.$nextTick()
 console.log(this.$el.textContent) // => '修改后的值'
 ```
+
+主要有：
+
+- 操作 DOM：在数据更新后立即操作 DOM，比如获取元素的尺寸、位置等。
+- 动画效果：在数据更新后立即触发动画效果。
+- 第三方库：在数据更新后与第三方库进行交互，比如图表库、地图库等。

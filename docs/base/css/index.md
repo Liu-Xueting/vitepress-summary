@@ -933,7 +933,8 @@ div {
 
 - 图像模态
   
-  ```css
+  ```vue
+  <style>
   #myImg {
     border-radius: 5px;
     cursor: pointer;
@@ -1012,14 +1013,17 @@ div {
       width: 100%;
     }
   }
-  <img id="myImg" src="/i/photo/tiyugongyuan.jpg" alt="绿茵场" style="width: 50%;">
+  </style>
 
+  <template>
+  <img id="myImg" src="/i/photo/tiyugongyuan.jpg" alt="绿茵场" style="width: 50%;">
   <!-- The Modal -->
   <div id="myModal" class="modal">
     <span class="close">×</span>
     <img class="modal-content" id="img01">
     <div id="caption"></div>
   </div>
+  </template>
   <script>
     // Get the modal
     var modal = document.getElementById('myModal');

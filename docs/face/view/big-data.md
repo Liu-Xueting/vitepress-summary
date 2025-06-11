@@ -3,7 +3,7 @@
 ## 1. 使用虚拟滚动
 
 - 使用虚拟列表技术，**只渲染可视区域内的元素**，减少DOM节点数量，提高性能。
-- 例如，使用`react-window`或`react-virtualized`等库来实现虚拟列表。
+- 例如，使用`react-window` 或 `react-virtualized`等库来实现虚拟列表。
 
 ### 1.1 react-window
 
@@ -48,27 +48,70 @@ import ReactDOM from 'react-dom';
 import { AutoSizer, List } from 'react-virtualized';
 import 'react-virtualized/styles.css'; // only needs to be imported once
 import './index.css';
+/*
+1. 安装：pnpm add react-virtualized
+2. 在项目入口文件 index.js 中引入 react-virtualized/styles.css
+3. 打开github docs文档，点击List组件，进入List组件的API文档
+4. 翻到最底部，查看示例
+*/
+/*
+使用AutoSizer组件来自动计算列表的宽度和高度
+1. 打开文档，通过 render-props 模式，获取到 AutoSizer 组件的宽度和高度
+2. 设置 List 组件的宽度和高度
+3. 设置 列表选择页面根元素高度100%，让List组件撑满页面
+4. 调整样式，让页面不要出现全局滚动条，避免顶部导航栏滚动
+*/
+const list = [
+  'Brian Vaughn',
+  // And so on...
+];
 
-const rowRenderer = ({ index, key, style }) => (
-  <div key={key} style={style}>
-    Row {index}
-  </div>
-);
+// 渲染每一行数据的函数
+function rowRenderer({
+    key,
+    index,// 索引号
+    isScrolling,// 是否正在滚动
+    isVisible, // 是否可见
+    style, // 行样式 注意:这里的行样式是必须要加上的  指定每一行的位置
+}) {
+  return (
+      <div key={key} style={style}>
+          {list[index]}
+      </div>
+  );
+}
 
-const App = () => (
-  <AutoSizer>
-    {({ height, width }) => (
-      <List
-        height={height}
-        rowCount={10000}
-        rowHeight={35}
-        rowRenderer={rowRenderer}
-        width={width}
-      />
-    )}
-  </AutoSizer>
-);
+function App() {
+  return (
+    <div className='city-list'>
+      <NavBar onBack={() => navigate(-1)} backIcon={<i className='iconfont icon-back icon' />} className='navbar'>城市选择</NavBar>
+      <AutoSizer>
+        {({ height, width }) => (
+          <List
+              width={width}
+              height={height}
+              rowCount={list.length}
+              rowHeight={20}
+              rowRenderer={rowRenderer}
+
+          />
+        )}
+      </AutoSizer>,
+    </div>
+  );
+}
 ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+```less
+.city-list {
+    height: 100%;
+    padding-top: 45px;
+
+    .navbar {
+        margin-top: -45px !important;
+    }
+}
 ```
 
 ### 1.3 vue-virtual-scroller
@@ -184,6 +227,14 @@ export default {
 };
 </script>
 ```
+
+## 3. 使用懒渲染
+
+原理：每次只渲染一部分(比如10条数据)，等渲染的数据即将滚动完时，再渲染下面部分
+优点：每次渲染一部分数据，速度快
+缺点：数据量大的时候，页面中依然存在大量DOM节点，占用内存过多、降低浏览器渲染性能，导致页面卡顿。
+
+和分片渲染原理差不多，但是分片是初始渲染时就将所有数据分片渲染完，而懒渲染是每次只渲染一部分数据，等渲染的数据即将滚动完时，再渲染下面部分。
 
 ## 3. 分页加载
 

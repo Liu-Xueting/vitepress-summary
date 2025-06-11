@@ -139,7 +139,7 @@ grid-template-areas: 'a a a'
 
 ### justify-content & align-content & place-content
 
-`justify-content` 属性是整个内容区域在容器里面的水平位置（左中右），`align-content` 属性是整个内容区域的垂直位置（上中下）
+`justify-content` 属性是**整个内容区域**在容器里面的水平位置（左中右），`align-content` 属性是**整个内容区域**的垂直位置（上中下）
 
 ```css
 .container {

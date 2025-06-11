@@ -184,6 +184,7 @@ const p = { b: 2, __proto__: o };
 1. Function.prototype.__proto__ === Object.prototype
 2. 如果在深究一点，Object也是函数对象，Object.__proto__ 也会指向Function.prototype
 3. 构造函数Test也有constructor属性，这个属性指向创建该函数的构造函数；如果自己没有定义构造函数，会指向到 Function （Test.constructor === Function）
+4. __proto__是一个对象的隐式原型属性，指向该 __对象的原型对象__，是实例和构造函数的连接桥梁
 
 ## 总结
 

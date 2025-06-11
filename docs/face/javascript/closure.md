@@ -117,3 +117,66 @@ const func = delayedFunction();
 setTimeout(func, 1000); // 1
 setTimeout(func, 2000); // 2
 ```
+
+### 4. 节流和防抖
+
+闭包可以用来实现节流和防抖的功能
+
+```javascript
+function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            func.apply(this, args);
+        }, delay);
+    };
+}
+const debouncedFunc = debounce(() => {
+    console.log('Debounced function executed');
+}, 1000);
+window.addEventListener('resize', debouncedFunc);
+```
+
+```javascript
+
+function throttle(func, delay) {
+    let lastTime = 0;
+    return function(...args) {
+        const now = Date.now();
+        if (now - lastTime >= delay) {
+            lastTime = now;
+            func.apply(this, args);
+        }
+    };
+}
+const throttledFunc = throttle(() => {
+    console.log('Throttled function executed');
+}, 1000);
+window.addEventListener('scroll', throttledFunc);
+```
+
+### 5. 函数缓存
+
+闭包可以用来实现函数缓存，避免重复计算
+
+```javascript
+function memoize(func) {
+    const cache = {};
+    return function(...args) {
+        const key = JSON.stringify(args);
+        if (cache[key]) {
+            return cache[key];
+        }
+        const result = func.apply(this, args);
+        cache[key] = result;
+        return result;
+    };
+}
+const memoizedAdd = memoize((a, b) => {
+    console.log('Calculating...');
+    return a + b;
+});
+console.log(memoizedAdd(1, 2)); // Calculating... 3
+console.log(memoizedAdd(1, 2)); // 3 (cached)
+```

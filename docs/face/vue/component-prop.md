@@ -77,24 +77,80 @@ methods:{
 父组件
 
 ```js
-<Children ref="foo" />  
-  
-this.$refs.foo  // 获取子组件实例，通过子组件实例我们就能拿到对应的数据  
+<template>
+  <Child ref="childRef" />
+</template>
+
+<script setup>
+  import Child from './Child.vue';
+  const childRef = ref(null);
+
+  onMounted(() => {
+    console.log(childRef.value); // 打印子组件实例
+  });
+</script>
+ 
+```
+
+子组件
+
+```js
+<template>
+  <Child ref="childRef" />
+  <button @click="getChildMessage">获取子组件属性</button>
+</template>
+
+<script setup>
+  import Child from './Child.vue';
+  const childRef = ref(null);
+
+  const getChildMessage = () => {
+    console.log(childRef.value.getMessage()); // 打印子组件的 message 属性
+  };
+</script>
+```
+
+在子组件中通过 defineExpose 向外暴露属性，父组件通过 ref 获取子组件实例，再调用子组件的方法获取属性。
+
+$parent
+
+父组件
+
+```vue
+<template>
+  <child-component :msg="message"></child-component>
+</template>
+
+<script setup>
+import ChildComponent from './ChildComponent.vue'
+
+const message = 'Hello, World!'
+
+defineExpose({
+  message
+})
+</script>
 ```
 
 子组件
 
 ```vue
-<button @click="handler($parent)">点击我爸爸给我10000元</button>
+<template>
+  <div>
+    <p>{{ msg }}</p>
+    <button @click="handleClick($parent)">Click me!</button>
+  </div>
+</template>
 
-<script>
-//闺女钱数
-let money = ref(999999);
-//闺女按钮点击回调
-const handler = ($parent)=>{
-   money.value+=10000;
-   $parent.money-=10000;
+<script setup>
+import { ref } from 'vue'
+
+const handleClick = ($parent) => {
+  // 通过$parent访问父组件向外暴露的message
+  console.log($parent.message)
 }
+
+const props = ['msg']
 </script>
 ```
 
@@ -300,3 +356,58 @@ defineProps(["todos"]);
 - 兄弟关系的组件数据传递可选择 `$bus` ，其次可以选择 `$parent` 进行传递
 - 祖先与后代组件数据传递可选择 `Provide` 与 `Inject`
 - 复杂关系的组件数据传递可以通过 `vuex` 存放共享的变量
+
+## 父子组件修改值
+
+1. 父组件修改子组件的数据
+
+  子组件定义 `defineExpose`，父组件通过 `ref` 获取子组件实例，再调用子组件的方法修改数据
+
+2. 子组件修改父组件数据
+
+- 父组件使用 `v-model` 绑定数据，子组件通过 `defineEmits(['update:count'])` 触发自定义事件，传递修改后的数据
+
+- 子组件通过 `$emit` 触发自定义事件，触发自定义事件，传递修改后的数据
+
+  在父组件中，使用 reactive 定义一个对象，并通过 v-model 绑定到子组件上：
+  
+  ```vue
+  <template>
+    <ChildComponent :obj="obj" @update:obj="updateObj" />
+    </template>
+
+  <script setup>
+    import { reactive } from 'vue';
+    import ChildComponent from './ChildComponent.vue';
+
+    const obj = reactive({
+      key: 'test'
+    });
+    const updateObj = (params) => {
+      obj.key = params;
+    };
+  </script>
+  ```
+
+  在子组件中，通过 defineProps 接收父组件传递的数据，并通过 defineEmits 定义一个事件来通知父组件更新数据：
+
+  ```vue
+  <template>
+    <button @click="onClick">修改父组件数据</button>
+  </template>
+
+  <script setup>
+    import { defineProps, defineEmits } from 'vue';
+    const props = defineProps({
+      obj: Object
+    });
+    const emit = defineEmits(['update:obj']);
+    const onClick = () => {
+      emit('update:obj', 'child');
+    };
+  </script>
+  ```
+
+- 父组件定义 `defineExpose`，子组件通过 `$parent` 获取父组件实例，访问和修改父组件数据
+
+子/父组件通过 `provide` 向外暴露属性，父/子组件通过 `inject` 获取数据，再对数据进行修改

@@ -16,7 +16,7 @@
    import { configureStore } from '@reduxjs/toolkit'
 
     export default configureStore({
-    reducer: {}
+        reducer: {}
     })
 
    ```
@@ -25,7 +25,7 @@
 
 3. 为 React 提供 Redux Store
 
-   创建 store 后，便可以在 React 组件中使用它。 在 src/index.js 中引入我们刚刚创建的 store , 通过 React-Redux 的 `<Provider>` 将 `<App>` 包裹起来,并将 store 作为 prop 传入。
+   创建 store 后，便可以在 React 组件中使用它。 在 `src/index.js` 中引入我们刚刚创建的 store , 通过 React-Redux 的 `<Provider>` 将 `<App>` 包裹起来,并将 store 作为 prop 传入。
 
     ```js
     index.js
@@ -59,17 +59,17 @@
         },
         reducers: {
             increment: state => {
-            // Redux Toolkit 允许我们在 reducers 写 "可变" 逻辑。它
-            // 并不是真正的改变状态值，因为它使用了 Immer 库
-            // 可以检测到“草稿状态“ 的变化并且基于这些变化生产全新的
-            // 不可变的状态
-            state.value += 1
+                // Redux Toolkit 允许我们在 reducers 写 "可变" 逻辑。它
+                // 并不是真正的改变状态值，因为它使用了 Immer 库
+                // 可以检测到“草稿状态“ 的变化并且基于这些变化生产全新的
+                // 不可变的状态
+                state.value += 1
             },
             decrement: state => {
-            state.value -= 1
+                state.value -= 1
             },
             incrementByAmount: (state, action) => {
-            state.value += action.payload
+                state.value += action.payload
             }
         }
     })
@@ -81,7 +81,7 @@
 
 5. 将 Slice Reducers 添加到 Store 中
 
-   我们可以使用 useSelector 从 store 中读取数据，使用 useDispatch dispatch actions。
+   我们可以使用 `useSelector` 从 `store` 中读取数据，使用 `useDispatch` dispatch actions。
    创建包含 `<Counter>` 组件的 src/features/counter/Counter.js 文件，然后将该组件导入 App.js 并在 `<App>` 中渲染它。
 
    ```js

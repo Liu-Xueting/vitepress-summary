@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "小婷博客"
   text: "学习总结&技术讨论"
-  tagline: My great project tagline
+  # tagline: My great project tagline
   actions:
     - theme: brand
       text: 目录
@@ -33,5 +33,8 @@ features:
   - title: Face
     details: 前端面试知识总结
     link: /face/
+  - title: 第三方API使用
+    details: 第三方API使用总结
+    link: /server-api/
 ---
 

@@ -16,8 +16,10 @@
 
 ## FACE
 
+- [协商缓存 & 强制缓存](./face/cache/)
 - [CSS](./face/css/)
 - [JavaScript](./face/javascript/)
+- [前端权限框架](./face/rbac/)
 - [面试场景题](./face/view/)
 - [Vue 相关面试题](./face/vue/)
 
@@ -29,10 +31,12 @@
 ## REACT
 
 - [React学习总结](./react/base/)
+- [React项目创建](./react/create/)
 - [Mock](./react/mock/)
 - [Redux](./react/redux/)
 - [React Router](./react/router/)
 - [React state & Reducer](./react/state/)
+- [React 样式重叠问题](./react/style/)
 - [antD-Design 主题定制](./react/theme/)
 
 ## SERVER-API
@@ -43,11 +47,18 @@
 
 - [构建工具](./tools/build/)
 - [Cursor工具的使用](./tools/cursor/)
+- [docker](./tools/docker/)
 - [Git 教程](./tools/git-tutorial/)
+- [npm 与 pnpm 区别](./tools/npm-pnpm/)
+- [PowerToys 常用快捷键](./tools/powertoys/)
 - [tsconfig.json](./tools/tsconfig/)
 
 ## VUE
 
 - [defineComponent](./vue/definecomponent/)
+- [Element Plus](./vue/element/)
+- [路由/图片懒加载](./vue/lazy/)
+- [Pinia](./vue/pinia/)
 - [Props & Events](./vue/props/)
 - [Vue底层原理解析](./vue/vue-deep/)
+- [VueX](./vue/vuex/)

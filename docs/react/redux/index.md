@@ -117,6 +117,61 @@
     }
     ```
 
+## 异步操作
+
+```js
+import { createSlice } from "@reduxjs/toolkit";
+import { request, getToken, setToken as _setToken, removeToken } from "@/utils";
+import { loginAPI, getUserInfoAPI } from "@/apis/user";
+const userStore = createSlice({
+    name: "user",
+    initialState: {
+        token: getToken() || '', // 从localStorage中获取token
+        userInfo: {}, // 用户信息
+    },
+    reducers: {
+        setToken(state, action) {
+            state.token = action.payload;
+            _setToken(action.payload) // 存储到localStorage
+        },
+        setUserInfo(state, action) {
+            state.userInfo = action.payload;
+        },
+        clearUserInfo(state) {
+            state.userInfo = {}; // 清空用户信息
+            state.token = ''; // 清空token
+            removeToken();
+        }
+    }
+});
+
+// 异步 完成登录获取token
+const fetchLogin = (loginForm) => {
+    return async (dispatch) => {
+        const res = await loginAPI(loginForm);
+        // if (res.status === 201) {
+        const token = res.data.data.token;
+        // 存储token到redux
+        dispatch(setToken(token));
+    }
+};
+
+const fetchUserInfo = () => {
+    return async (dispatch) => {
+        const res = await getUserInfoAPI();
+        // console.log(res.data)
+        dispatch(setUserInfo(res.data)) // 存储用户信息到redux
+    }
+}
+
+// 带出actions 和reducer
+const { setToken, setUserInfo, clearUserInfo } = userStore.actions;
+
+const userReducer = userStore.reducer;
+export default userReducer;
+export { setToken, setUserInfo, clearUserInfo, fetchLogin, fetchUserInfo };
+```
+
 现在，每当你点击”递增“和“递减”按钮。
 
 - 会 dispatch 对应的 Redux action 到 stores

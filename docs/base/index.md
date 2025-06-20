@@ -5,3 +5,6 @@
 - [JavaScript](./javascript/)
 - [Web API](./web-api/)
 - [npm](./npm/)
+- [module](./module/)
+- [typescript](./typescript/)
+- [Web](./web-api/)

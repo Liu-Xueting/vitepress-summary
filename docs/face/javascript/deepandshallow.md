@@ -77,6 +77,20 @@ console.log(obj2); // {name: "A"}
 **循环递归**:
 
 ```javascript
+const isObj = (val) => return typeof val === 'onject' && val != null;
+
+function deepClone(obj) {
+    const newObj = Array.isArray(obj) ? [] : {};
+    for(let key in obj) {
+        const item = obj[key];
+        newOnj[key] = isObj(item) ? deepClone(item) : item; // 如果是对象则递归调用
+    }
+    return newObj;
+}
+
+```
+
+```javascript
 function deepClone(target,map = new WeakMap()){
     if(map.get(target)){
         // 说明对象已经被复制过

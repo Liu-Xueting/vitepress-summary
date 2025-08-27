@@ -6,6 +6,7 @@
 
 ```bash
 pnpm add react-router-dom
+pnpm add react-router@6
 ```
 
 在index.tsx中引入

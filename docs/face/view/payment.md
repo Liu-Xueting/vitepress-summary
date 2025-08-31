@@ -1,5 +1,11 @@
 # 支付流程
 
+- PC 端支付(生成二维码) <https://pay.weixin.qq.com/doc/v3/merchant/4012791874>
+- App 端支付(调起微信支付) <https://pay.weixin.qq.com/doc/v3/merchant/4013070158>
+- 小程序支付uniapp(调起微信支付) <https://pay.weixin.qq.com/doc/v3/merchant/4012791894>
+- 手机浏览器支付(调起微信支付) <https://pay.weixin.qq.com/doc/v3/merchant/4012791832>
+- 微信内部浏览器支付(调起微信支付) <https://pay.weixin.qq.com/doc/v3/merchant/4012062524>
+
 ## PC 端支付
 
 1. 选择支付方式

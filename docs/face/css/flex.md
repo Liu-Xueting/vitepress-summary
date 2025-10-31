@@ -23,7 +23,7 @@ display: inline-flex: 将元素设置为弹性盒子，允许其子元素使用�
 
 当元素表现为 flex 框时，它们沿着两个轴来布局：
 
-![Flex Layout](./flex.png)
+<!-- ![Flex Layout](./flex.png) -->
 
 - 主轴（main axis）是沿着 flex 元素放置的方向延伸的轴。该轴的开始和结束被称为 main start 和 main end。
 - 交叉轴（cross axis）是垂直于 flex 元素放置方向的轴。该轴的开始和结束被称为 cross start 和 cross end。

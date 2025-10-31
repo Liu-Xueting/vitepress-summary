@@ -126,41 +126,41 @@ diff整体策略为：深度优先，同层比较
 
 1. 比较只会在同层级进行, 不会跨层级比较
 
-    ![diff-01](/diff-01.png)
+    ![diff-01](/diff/diff-01.png)
 
 2. 比较的过程中，循环从两边向中间收拢
 
-    ![diff-02](/diff-02.png)
+    ![diff-02](/diff/diff-02.png)
 
 下面举个vue通过diff算法更新的例子：
 
 新旧VNode节点如下图所示：
 
-![diff-03](/diff-03.png)
+![diff-03](/diff/diff-03.png)
 
 第一次循环后，发现旧节点D与新节点D相同，直接复用旧节点D作为 `diff` 后的第一个真实节点，同时旧节点 `endIndex` 移动到 C，新节点的 `startIndex` 移动到了 C
 
-![diff-04](/diff-04.png)
+![diff-04](/diff/diff-04.png)
 
 第二次循环后，同样是旧节点的末尾和新节点的开头(都是 C)相同，同理，diff 后创建了 C 的真实节点插入到第一次创建的 D 节点后面。同时旧节点的 endIndex 移动到了 B，新节点的 startIndex 移动到了 E
 
-![diff-05](/diff-05.png)
+![diff-05](/diff/diff-05.png)
 
 第三次循环中，发现E没有找到，这时候只能直接创建新的真实节点 E，插入到第二次创建的 C 节点之后。同时新节点的 startIndex 移动到了 A。旧节点的 startIndex 和 endIndex 都保持不动
 
-![diff-06](/diff-06.png)
+![diff-06](/diff/diff-06.png)
 
 第四次循环中，发现了新旧节点的开头(都是 A)相同，于是 diff 后创建了 A 的真实节点，插入到前一次创建的 E 节点后面。同时旧节点的 startIndex 移动到了 B，新节点的startIndex 移动到了 B
 
-![diff-07](/diff-07.png)
+![diff-07](/diff/diff-07.png)
 
 第五次循环中，情形同第四次循环一样，因此 diff 后创建了 B 真实节点 插入到前一次创建的 A 节点后面。同时旧节点的 startIndex移动到了 C，新节点的 startIndex 移动到了 F
 
-![diff-08](/diff-08.png)
+![diff-08](/diff/diff-08.png)
 
 新节点的 startIndex 已经大于 endIndex 了，需要创建 newStartIdx 和 newEndIdx 之间的所有节点，也就是节点F，直接创建 F 节点对应的真实节点放到 B 节点后面
 
-![diff-09](/diff-09.png)
+![diff-09](/diff/diff-09.png)
 
 ### 原理分析
 

@@ -36,5 +36,11 @@ features:
   - title: 第三方API使用
     details: 第三方API使用总结
     link: /server-api/
+  - title: Echarts
+    details: Echarts 相关知识总结
+    link: /echarts/
+  - title: WebGL
+    details: WebGL 相关知识总结
+    link: /webgl/
 ---
 

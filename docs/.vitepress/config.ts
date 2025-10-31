@@ -13,7 +13,7 @@ import AutoSidebarPlugin from 'vite-plugin-vitepress-auto-sidebar'
 
 const isDev = process.env.npm_lifecycle_event?.startsWith('dev') ?? false
 const HOST = 'https://ting.alexsun.top'
-const BASE = '/blog/'
+const BASE = '/'
 type ThemeConfig = Parameters<typeof defineConfig>[0]
 
 // https://vitepress.dev/reference/site-config

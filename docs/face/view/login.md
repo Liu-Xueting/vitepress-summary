@@ -38,7 +38,7 @@ Vue 项目改变项目 host 方法
    ```
 2. 在 C:\Windows\System32\drivers\etc\hosts 文件中添加下面一行
 
-   ```txt
+   ```js
    127.0.0.1   my-app
    ```
 

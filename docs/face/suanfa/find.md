@@ -25,9 +25,9 @@ function binSearch(arr, target) {
     while(left <= right) {
         let mid = Math.floor((left + right) / 2);
         if (arr[mid] < target){
-            mid = mid + 1;
+            left = mid + 1;
         } else if (arr[mid] > target) {
-            mid = mid - 1;
+            right = mid - 1;
         } else {
             return mid; // 返回目标元素的索引
         }

@@ -1,14 +1,14 @@
-# 1. DOM
+# DOM
 
-## 1 节点层级
+## 节点层级
 
 document 节点表示每个文档的根节点。在这里，根节点的唯一子节点是`<html>`元素，我们称之
 
 为文档元素（documentElement）
 
-### 1 **Node** 类型
+### Node 类型
 
-DOM Level 1 描述了名为 Node 的接口，这个接口是所有 DOM 节点类型都必须实现的。Node 接口
+DOM Level 描述了名为 Node 的接口，这个接口是所有 DOM 节点类型都必须实现的。Node 接口
 
 在 JavaScript中被实现为 Node 类型
 
@@ -148,7 +148,7 @@ if (someNode.nodeType == Node.ELEMENT_NODE){
   alert(shallowList.childNodes.length); // 0
   ```
 
-### 1 **Document** 类型
+### Document 类型
 
 Document 类型是 JavaScript 中表示文档节点的类型。在浏览器中，文档对象 document 是
 
@@ -288,7 +288,7 @@ Document 类型的节点有以下特征：
   </html>
   ```
 
-### 1 **Element** 类型
+### **Element** 类型
 
 除了Document 类型，Element 类型就是Web开发中最常用的类型了。Element 表示XML或HTML元素，对外暴
 
@@ -438,7 +438,7 @@ let id = element.attributes["id"].nodeValue;
 
   以上代码会遍历某个元素的子节点，并且只在 nodeType 等于 1（即 Element 节点）时执行某个操作。
 
-### 1 **Text** 类型
+### Text 类型
 
 Text 节点由 Text 类型表示，包含按字面解释的纯文本，也可能包含转义后的 HTML 字符，但不含 HTML 代码。Text 类型的节点具有以下特征：
 
@@ -496,7 +496,7 @@ Text 节点由 Text 类型表示，包含按字面解释的纯文本，也可能
   document.body.appendChild(element); 
   alert(element.childNodes.length); // 2 
   element.normalize(); 
-  alert(element.childNodes.length); // 1 
+  alert(element.childNodes.length); // 
   alert(element.firstChild.nodeValue); // "Hello world!Yippee!"
   ```
 
@@ -513,7 +513,7 @@ Text 节点由 Text 类型表示，包含按字面解释的纯文本，也可能
   alert(newNode.nodeValue); // " world!" 
   alert(element.childNodes.length); // 2
 
-### 1 **Comment** 类型
+### Comment 类型
 
 DOM 中的注释通过 Comment 类型表示。Comment 类型的节点具有以下特征：
 
@@ -531,7 +531,7 @@ DOM 中的注释通过 Comment 类型表示。Comment 类型的节点具有以�
 <div id="myDiv"><!-- A comment --></div>
 ```
 
-### 1 **CDATASection** 类型
+### CDATASection 类型
 
 CDATASection 类型表示 XML 中特有的 CDATA 区块。CDATASection 类型继承 Text 类型，因此拥有包括 splitText()在内的所有字符串操作方法。CDATASection 类型的节点具有以下特征：
 
@@ -549,7 +549,7 @@ CDATASection 类型表示 XML 中特有的 CDATA 区块。CDATASection 类型继
 <div id="myDiv"><![CDATA[This is some content.]]></div>
 ```
 
-### 1 **DocumentType** 类型
+### DocumentType 类型
 
 DocumentType 类型的节点包含文档的文档类型（doctype）信息，具有以下特征：
 
@@ -570,7 +570,7 @@ DocumentType 类型的节点包含文档的文档类型（doctype）信息，具
 alert(document.doctype.name); // "html
 ```
 
-### 1 **DocumentFragment** 类型
+### DocumentFragment 类型
 
 在所有节点类型中，DocumentFragment 类型是唯一一个在标记中没有对应表示的类型。DOM 将文档片段定义为“轻量级”文档，能够**包含和操作节点**，却**没有完整文档那样额外的消耗**。
 
@@ -601,7 +601,7 @@ for (let i = 0; i < 3; ++i) {
 ul.appendChild(fragment);
 ```
 
-### 1 **Attr** 类型
+### Attr 类型
 
 元素数据在 DOM 中通过 Attr 类型表示。Attr 类型构造函数和原型在所有浏览器中都可以直接访
 
@@ -628,9 +628,9 @@ alert(element.getAttributeNode("align").value); // "left"
 alert(element.getAttribute("align")); // "left"
 ```
 
-## 1 DOM 编程
+## DOM 编程
 
-### 1. 动态脚本
+### 动态脚本
 
 ```javascript
 // 动态加载外部文件很容易实现，比如下面的<script>元素：
@@ -667,7 +667,7 @@ script.text = "function sayHi(){alert('hi');}";
 document.body.appendChild(script);
 ```
 
-### 1. 动态样式
+### 动态样式
 
 ```javascript
 // 来看下面这个典型的<link>元素：
@@ -695,7 +695,7 @@ let head = document.getElementsByTagName("head")[0];
 head.appendChild(style);
 ```
 
-## 1. 操作表格
+## 操作表格
 
 ```html
 <table border="1" width="100%"> 
@@ -721,9 +721,9 @@ table.width = "100%";
 let tbody = document.createElement("tbody"); 
 table.appendChild(tbody); 
 // 创建第一行
-let row1 = document.createElement("tr"); 
+let row= document.createElement("tr"); 
 tbody.appendChild(row1); 
-let cell1_1 = document.createElement("td"); 
+let cell1_= document.createElement("td"); 
 cell1_1.appendChild(document.createTextNode("Cell 1,1")); 
 row1.appendChild(cell1_1); 
 let cell = document.createElement("td"); 
@@ -790,7 +790,7 @@ HTML DOM 给`<table>`、`<tbody>`和`<tr>`
 
 ​  insertCell(*pos*)，在表元集合给定位置插入一个表元，返回该表元的引用。
 
-### 1. 使用 **NodeList**
+### 使用 NodeList
 
 理解 NodeList 对象和相关的 NamedNodeMap、HTMLCollection，是理解 DOM 编程的关键。**NamedNodeMap是getElementByname返回的节点集合  是根据name属性查找的节点**
 
@@ -824,7 +824,7 @@ for (let i = 0, len = divs.length; i < len; ++i) {
 
 的 NodeList 缓存起来
 
-### 1. NodeList和HTMLCollection区别
+### NodeList和HTMLCollection区别
 
 在 JavaScript 中，**HTMLCollection** 和 **NodeList** 都是用于表示一组 DOM 元素的集合，但它们有一些显著的区别。
 
@@ -869,11 +869,11 @@ console.log(entry); // [0, <body>...</body>]
 
 *querySelectorAll()* *getElementsByClassName()* *Node.childNodes*返回 NodeList 集合，而 *getElementsByTagName* 返回 HTMLCollection 集合
 
-## 1 **MutationObserver** 接口
+## **MutationObserver** 接口
 
 不久前添加到 DOM 规范中的 MutationObserver 接口，可以在 DOM 被修改时异步执行回调
 
-### 1 基本用法
+### 基本用法
 
 - **observe()**方法
 
@@ -923,7 +923,7 @@ console.log(entry); // [0, <body>...</body>]
   //（没有日志输出）
   ```
 
-## 2. DOM扩展
+## DOM扩展
 
 ### Selectors API
 

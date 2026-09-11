@@ -19,8 +19,8 @@
     "iconify-icon": "^2.3.0",
     "mermaid": "^11.5.0",
     "sass-embedded": "^1.86.0",
-    "vite-plugin-vitepress-auto-sidebar": "^1.7.1",
-    "vitepress": "^1.6.3",
+    "vitepress": "1.5.0",
+  "vite-plugin-vitepress-auto-sidebar": "^1.7.1",
     "vitepress-plugin-mermaid": "^2.0.17",
     "vitepress-plugin-tabs": "^0.6.0"
   },

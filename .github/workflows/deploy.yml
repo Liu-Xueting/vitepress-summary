@@ -25,13 +25,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
-      # 用官方action安装pnpm，替代npm install -g pnpm
+      # 不写version，自动读取package.json的packageManager里pnpm版本
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: latest
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

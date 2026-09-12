@@ -28,8 +28,8 @@ jobs:
           node-version: 22
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install dependencies（带上可选依赖，解决rollup二进制缺失）
+        run: npm ci --include=optional
 
       - name: Build VitePress
         run: npm run docs:build

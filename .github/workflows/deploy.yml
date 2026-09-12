@@ -1,5 +1,4 @@
 name: 小婷学习文档
-
 on:
   # 当main分支提交代码自动触发部署
   push:
@@ -30,13 +29,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: 'pnpm' # 修改为pnpm缓存
+
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install # 替换成pnpm安装
 
       - name: Build VitePress
-        run: npm run docs:build
+        run: pnpm run docs:build # 如果你的package.json脚本是npm的，这里看情况，一般pnpm通用
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

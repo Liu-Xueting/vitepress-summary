@@ -7,4 +7,3 @@
 - [npm](./npm/)
 - [module](./module/)
 - [typescript](./typescript/)
-- [Web](./web-api/)

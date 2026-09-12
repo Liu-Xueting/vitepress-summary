@@ -10,10 +10,12 @@
 - [CSS总结](./base/css/)
 - [html](./base/html/)
 - [图片加载失败兜底](./base/image/)
+- [javascript](./base/javascript/)
 - [模块化ESM、CJS、UMD](./base/module/)
 - [包管理工具](./base/npm/)
 - [一些好用的插件](./base/plugins/)
 - [TypeScript](./base/typescript/)
+- [Web API](./base/web-api/)
 
 ## ECHARTS
 

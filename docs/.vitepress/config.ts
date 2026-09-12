@@ -13,7 +13,7 @@ import AutoSidebarPlugin from 'vite-plugin-vitepress-auto-sidebar'
 
 const isDev = process.env.npm_lifecycle_event?.startsWith('dev') ?? false
 const HOST = 'https://ting.alexsun.top'
-const BASE = '/'
+const BASE = '/vitepress-summary/'
 type ThemeConfig = Parameters<typeof defineConfig>[0]
 
 // https://vitepress.dev/reference/site-config
@@ -33,15 +33,22 @@ export default withMermaid(<ThemeConfig>{
         items: [
           { text: "基础三件套", link: '/base/' },
           { text: "工具", link: '/tools/' },
+          {text: "单点登录", link: '/oauth/' },
+          {text: "第三方API使用", link: '/server-api/' },
+          {text: "Vue", link: '/vue/' },
+          {text: "React", link: '/react/' },
+          {text: "前端面试", link: '/face/' },
+          {text: "WebGL", link: '/webgl/' },
+          {text: "工作", link: '/work/'},
         ]
       },
     ],
-    footer: {
-      message: `基于 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC-BY-NC-SA 4.0</a> 协议共享知识 |
-        构建时间：${new Date().toLocaleString()}`,
-      copyright: `版权所有 ©${new Date().getFullYear()} Alex Sun |
-        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">苏ICP备2023012081号-3</a>`,
-    },
+    //footer: {
+    //  message: `基于 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC-BY-NC-SA 4.0</a> 协议共享知识 |
+    //    构建时间：${new Date().toLocaleString()}`,
+    //  copyright: `版权所有 ©${new Date().getFullYear()} Alex Sun |
+    //    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">苏ICP备2023012081号-3</a>`,
+    //},
 
 
     socialLinks: [

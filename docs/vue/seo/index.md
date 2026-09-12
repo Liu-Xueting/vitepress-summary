@@ -49,7 +49,7 @@ useHead({
 })
 ```
 
-## 3. 语义化标签 header  <footer> <nav>  <main>
+## 3. 语义化标签 header  `<footer>` `<nav>`  `<main>`
 
 使用语义化的 HTML 标签有助于搜索引擎理解页面结构和内容。例如，使用 `<header>`、`<footer>`、`<nav>` 和 `<main>` 标签来定义页面的不同部分。
 

@@ -26,16 +26,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-
-      # 不写version，自动读取package.json的packageManager里pnpm版本
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Build VitePress
-        run: pnpm run docs:build
+        run: npm run docs:build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
